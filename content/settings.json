@@ -2,12 +2,12 @@
   "site_name": "BIOLOGÍA",
   "site_byline": "by AlexValve",
   "logo": "",
-  "favicon": "",
-  "hero_image": "https://images.unsplash.com/photo-1564349683136-77e08dba1ef7?w=1400&q=80",
-  "hero_title": "¡Bienvenidos, biologotters!",
-  "hero_subtitle": "Un recurso para clases, cursos y asesorías orientado a estudiantes del Programa del Diploma de Bachillerato Internacional (IB), asignatura Biología Nivel Medio.",
   "notice_active": true,
-  "notice_text": "Muchas páginas aún están incompletas y se irán actualizando de acuerdo al grado de necesidad, adaptándose a la guía con primeras evaluaciones en 2025.",
   "footer_text": "Recurso educativo para el Programa del Diploma IB",
-  "footer_links": "<a href='/sobre-mi/'>Sobre Mí</a> · <a href='/componentes-ib/evaluacion-interna/'>EI</a> · <a href='/habilidades/analisis-estadistico/'>Habilidades</a>"
+  "hero_title": "¡Bienvenidos, biologotters!",
+  "favicon": "",
+  "notice_text": "Muchas páginas aún están incompletas y se irán actualizando de acuerdo al grado de necesidad, adaptándose a la guía con primeras evaluaciones en 2025.",
+  "footer_links": "<a href='/sobre-mi/'>Sobre Mí</a> · <a href='/componentes-ib/evaluacion-interna/'>EI</a> · <a href='/habilidades/analisis-estadistico/'>Habilidades</a>",
+  "hero_image": "/images/uploads/image_2026-03-09_132831917.png",
+  "hero_subtitle": "Un recurso para clases, cursos y asesorías orientado a estudiantes del Programa del Diploma de Bachillerato Internacional (IB), asignatura Biología Nivel Medio."
 }
