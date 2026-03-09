@@ -1,0 +1,211 @@
+backend:
+  name: git-gateway
+  branch: main
+
+# Media / image uploads
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+# ─────────────────────────────────────────────
+# SITE SETTINGS
+# ─────────────────────────────────────────────
+collections:
+
+  - name: "settings"
+    label: "⚙️ Configuración del Sitio"
+    files:
+      - name: "general"
+        label: "Configuración General"
+        file: "content/settings.json"
+        format: json
+        fields:
+          - { label: "Nombre del sitio",    name: site_name,    widget: string, default: "BIOLOGÍA" }
+          - { label: "Subtítulo (by ...)",  name: site_byline,  widget: string, default: "by AlexValve" }
+          - label: "Logo del sitio"
+            name: logo
+            widget: image
+            required: false
+            hint: "Sube tu logo aquí. Se mostrará en la barra de navegación en todas las páginas."
+          - label: "Favicon (ícono del navegador)"
+            name: favicon
+            widget: image
+            required: false
+            hint: "Ícono pequeño que aparece en la pestaña del navegador. Recomendado: PNG cuadrado de 32x32 o 64x64px."
+          - label: "Imagen de portada (hero)"
+            name: hero_image
+            widget: image
+            required: false
+            hint: "Imagen de fondo de la sección principal de la homepage."
+          - { label: "Título del hero",       name: hero_title,    widget: string }
+          - { label: "Subtítulo del hero",    name: hero_subtitle, widget: text }
+          - { label: "Mostrar aviso de construcción", name: notice_active, widget: boolean, default: true }
+          - { label: "Texto del aviso",       name: notice_text,   widget: text, required: false }
+          - { label: "Texto del footer",      name: footer_text,   widget: string }
+          - label: "Links del footer"
+            name: footer_links
+            widget: string
+            required: false
+            hint: "HTML simple para los links. Ej: <a href='/sobre-mi/'>Sobre Mí</a> · <a href='/contacto/'>Contacto</a>"
+
+# ─────────────────────────────────────────────
+# BIOLOGÍA IB — TEMAS (A, B, C, D)
+# ─────────────────────────────────────────────
+  - name: "temas-ib"
+    label: "🧬 Biología IB — Temas"
+    label_singular: "Tema IB"
+    folder: "temas"
+    create: true
+    slug: "{{slug}}"
+    path: "{{slug}}/index"
+    extension: html
+    format: frontmatter
+    fields:
+      - { label: "Título",            name: title,       widget: string }
+      - { label: "Sección (ej: A)",   name: section,     widget: select, options: ["A", "B", "C", "D"] }
+      - { label: "Descripción corta", name: description, widget: string }
+      - { label: "Fecha actualización", name: updated,   widget: datetime, required: false }
+      - { label: "Mostrar en construcción", name: draft, widget: boolean, default: false }
+      - label: "Contenido"
+        name: body
+        widget: markdown
+        buttons: [bold, italic, code, link, heading-two, heading-three, bulleted-list, numbered-list, quote]
+        hint: "Usa los botones para dar formato. Para insertar imágenes, tablas o videos, usa los bloques especiales de abajo."
+
+      - label: "Bloques especiales"
+        name: blocks
+        widget: list
+        required: false
+        types:
+          - label: "📷 Imagen con pie de foto"
+            name: image
+            widget: object
+            fields:
+              - { label: "Imagen", name: image, widget: image }
+              - { label: "Pie de foto", name: caption, widget: string, required: false }
+
+          - label: "🎬 Video (YouTube/Vimeo)"
+            name: video
+            widget: object
+            fields:
+              - { label: "URL del video", name: url, widget: string, hint: "Pega la URL normal de YouTube o Vimeo" }
+              - { label: "Descripción",   name: caption, widget: string, required: false }
+
+          - label: "📋 Tabla"
+            name: table
+            widget: object
+            fields:
+              - { label: "Título de la tabla", name: title, widget: string, required: false }
+              - label: "Encabezados (separados por coma)"
+                name: headers
+                widget: string
+                hint: "Ej: Característica, Procariótica, Eucariótica"
+              - label: "Filas"
+                name: rows
+                widget: list
+                field: { label: "Fila (valores separados por coma)", name: row, widget: string }
+
+          - label: "💬 Cuadro de aviso (Callout)"
+            name: callout
+            widget: object
+            fields:
+              - label: "Tipo"
+                name: type
+                widget: select
+                options:
+                  - { label: "ℹ️ Información",  value: info }
+                  - { label: "⚠️ Advertencia",  value: warning }
+                  - { label: "✅ Éxito/Nota",   value: success }
+                  - { label: "🚨 Error frecuente", value: danger }
+              - { label: "Título del aviso", name: title,   widget: string }
+              - { label: "Texto",            name: content, widget: text }
+
+# ─────────────────────────────────────────────
+# TEMAS 2016
+# ─────────────────────────────────────────────
+  - name: "temas-2016"
+    label: "📚 Temas 2016"
+    label_singular: "Tema 2016"
+    folder: "temas-2016"
+    create: true
+    slug: "{{slug}}"
+    path: "{{slug}}/index"
+    extension: html
+    format: frontmatter
+    fields:
+      - { label: "Título",            name: title,       widget: string }
+      - { label: "Número de Tema",    name: topic_num,   widget: string, hint: "Ej: 1, 2, 3..." }
+      - { label: "Descripción corta", name: description, widget: string }
+      - { label: "Fecha actualización", name: updated,   widget: datetime, required: false }
+      - { label: "Contenido",         name: body,        widget: markdown }
+      - label: "Bloques especiales"
+        name: blocks
+        widget: list
+        required: false
+        types:
+          - label: "📷 Imagen"
+            name: image
+            widget: object
+            fields:
+              - { label: "Imagen",      name: image,   widget: image }
+              - { label: "Pie de foto", name: caption, widget: string, required: false }
+          - label: "🎬 Video"
+            name: video
+            widget: object
+            fields:
+              - { label: "URL del video", name: url,     widget: string }
+              - { label: "Descripción",   name: caption, widget: string, required: false }
+          - label: "💬 Callout"
+            name: callout
+            widget: object
+            fields:
+              - { label: "Tipo",    name: type,    widget: select, options: [info, warning, success, danger] }
+              - { label: "Título",  name: title,   widget: string }
+              - { label: "Texto",   name: content, widget: text }
+
+# ─────────────────────────────────────────────
+# CURSOS
+# ─────────────────────────────────────────────
+  - name: "cursos"
+    label: "🎓 Cursos"
+    folder: "cursos"
+    create: true
+    slug: "{{slug}}"
+    path: "{{slug}}/index"
+    extension: html
+    format: frontmatter
+    fields:
+      - { label: "Nombre del curso",  name: title,       widget: string }
+      - { label: "Descripción",       name: description, widget: string }
+      - { label: "Contenido",         name: body,        widget: markdown }
+
+# ─────────────────────────────────────────────
+# HABILIDADES
+# ─────────────────────────────────────────────
+  - name: "habilidades"
+    label: "🔬 Habilidades"
+    folder: "habilidades"
+    create: true
+    slug: "{{slug}}"
+    path: "{{slug}}/index"
+    extension: html
+    format: frontmatter
+    fields:
+      - { label: "Título",      name: title,       widget: string }
+      - { label: "Descripción", name: description, widget: string }
+      - { label: "Contenido",   name: body,        widget: markdown }
+
+# ─────────────────────────────────────────────
+# COMPONENTES IB
+# ─────────────────────────────────────────────
+  - name: "componentes-ib"
+    label: "🏫 Componentes del IB"
+    folder: "componentes-ib"
+    create: true
+    slug: "{{slug}}"
+    path: "{{slug}}/index"
+    extension: html
+    format: frontmatter
+    fields:
+      - { label: "Título",      name: title,       widget: string }
+      - { label: "Descripción", name: description, widget: string }
+      - { label: "Contenido",   name: body,        widget: markdown }
