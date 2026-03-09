@@ -113,6 +113,24 @@ img { max-width: 100%; display: block; }
 #nav-links a:hover { background: var(--bg-hover); color: var(--text); text-decoration: none; }
 #nav-links a.active { color: var(--text); }
 
+/* ChikoritoGPT badge */
+#nav-chikorito {
+  display: flex; align-items: center; gap: 5px;
+  font-size: 13px; font-weight: 600;
+  color: #c2440a;
+  background: #fff0e6;
+  border: 1px solid #f5c4a0;
+  padding: 4px 10px; border-radius: 20px;
+  margin-left: 6px;
+  transition: background 120ms, box-shadow 120ms;
+  white-space: nowrap; text-decoration: none !important;
+}
+#nav-chikorito:hover { background: #ffe0cc; box-shadow: 0 1px 6px rgba(200,80,0,.15); }
+[data-theme="dark"] #nav-chikorito {
+  color: #ffb07a; background: #2a1a0e; border-color: #5a3010;
+}
+[data-theme="dark"] #nav-chikorito:hover { background: #3a2010; }
+
 /* Menu button — hidden on desktop, visible on mobile */
 #menu-btn { display: none; }
 
@@ -367,6 +385,7 @@ img { max-width: 100%; display: block; }
       <a href="/cursos/">Cursos</a>
       <a href="/componentes-ib/">Componentes del IB</a>
       <a href="/habilidades/">Habilidades</a>
+      <a href="https://chatgpt.com/g/g-69a7ab0c68f8819183d4b6790eb04940-chikoritogpt" id="nav-chikorito" target="_blank" rel="noopener">🐈‍⬛ ChikoritoGPT</a>
     </div>
 
     <!-- Search, theme, menu -->
